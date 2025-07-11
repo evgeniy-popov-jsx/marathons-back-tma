@@ -8,7 +8,17 @@ const paymentRouter = require('./routes/paymentRouter');
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'https://irina-grechushenko-web-marathons-front-tma-1bc2.twc1.net',
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions));
 app.set('trust proxy', true);
 
 if (process.env.NODE_ENV === 'development') {
