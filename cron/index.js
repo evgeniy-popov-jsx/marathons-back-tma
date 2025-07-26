@@ -9,8 +9,6 @@ const processUsersWithUpdates = async () => {
       {
         $match: {
           $or: [
-            { 'badGirl.reviews': 'update' },
-            { 'badGirl.diagnostics': 'update' },
             { 'badGirl.introductoryDay': 'update' },
             { 'badGirl.day1': 'update' },
             { 'badGirl.day2': 'update' },
@@ -78,9 +76,7 @@ const processUsersWithUpdates = async () => {
 
 module.exports = processUsersWithUpdates;
 
-cron.schedule('0 10 * * *', processUsersWithUpdates, {
-  timeZone: 'Europe/Moscow'
-});
+cron.schedule('0 7 * * *', processUsersWithUpdates);
 
 console.log('CRON задача для пользователей запущена');
 
